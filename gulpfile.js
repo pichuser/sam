@@ -14,7 +14,8 @@ gulp.task('webserver', function() {
             //directoryListing: true,
             open: true,
             fallback: 'index.html',
-            port: 8001
+            port: 8001,
+            host: '192.168.3.120'
         }));
 });
 

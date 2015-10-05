@@ -1,8 +1,58 @@
 $yellow: #FFCD32
 $dark-grey: #353534
+
+
+@mixin test($container_max-width,
+$contact-info_height,
+$number_font-size,
+$email_font-size,
+$skype_margin-top,
+$skype_div_font-size,
+$vertical-right_transform,
+$vertical-right_font-size)
+  .container
+    max-width: $container_max-width
+    .contact-info
+      height: $contact-info_height
+      .number
+        font-size: $number_font-size
+      .email
+        font-size: $email_font-size
+      .skype
+        margin-top: $skype_margin-top
+        div
+        font-size: $skype_div_font-size
+    .vertical-right
+      -webkit-transform-origin: $vertical-right_transform
+
+@mixin respond-to($media)
+  @if $media == 1920
+    @media only screen and (max-width: 1920px) and (min-width: 1600px)
+      @content
+  @else if $media == 1600
+    @media only screen and (max-width: 1600px) and (min-width: 1368px)
+      @content
+  @else if $media == 1368
+    @media only screen and (max-width: 1368px) and (min-width: 1280px)
+      @content
+  @else if $media == 1280
+    @media only screen and (max-width: 1280px) and (min-width: 1024px)
+      @content
+  @else if $media == 1024
+    @media only screen and (max-width: 1024px)
+      @content
+
+@font-face
+  font-family: "Circe Light"
+  src: url("font/CRC35.otf")
+
 .container, .contact-info, .vertical-right
   transition: 1s
 
+.container
+  margin: auto
+  color: white
+  font-family: "Circe", serif
 .clear
   clear: both
 .vertical-right
@@ -11,64 +61,90 @@ $dark-grey: #353534
   width: 0
   letter-spacing: 10px
   height: 0
-  -webkit-transform-origin: 300px 340px
   -webkit-transform: rotate(270deg)
   font-size: 26px
-
-
-@media screen and (max-width : 2000px)
-  .container
-    margin: auto
-    max-width: 1900px
-    color: white
-    font-family: "Circe", serif
-  .menu-icon
-    font-size : 40px
-    font-weight : bolder
-  .contact-info
-    background-color: $dark-grey
+.menu-icon
+  font-weight : bolder
+.contact-info
+  background-color: $dark-grey
+  text-align: center
+  &:before
+    height: 100%
+    display: inline-block
+    vertical-align: middle
+    content: ''
+  .wrap
+    display: inline-block
+    white-space: normal
+    vertical-align: middle
     text-align: center
-    height: 750px
-    &:before
-      height: 100%
-      display: inline-block
+  .number
+    color: $yellow
+    font-weight: bold
+  .email
+    font-family: "Circe Light", serif
+  .skype
+    margin-top: 50px
+    overflow: hidden
+    display: inline-block
+    text-align: center
+    img
+      float: left
+    div
       vertical-align: middle
-      content: ''
-    .wrap
-      display: inline-block
-      white-space: normal
-      vertical-align: middle
-      text-align: center
-    .number
       color: $yellow
-      font-size: 130px
-      font-weight: bold
-    .email
-      font-size: 95px
-      font-family: "Circe Light", serif
-    .skype
-      margin-top: 50px
-      overflow: hidden
-      display: inline-block
-      text-align: center
-      img
-        float: left
-      div
-        vertical-align: middle
-        color: $yellow
-        float: left
-        font-size: 40px
-        margin-top: -10px
-        margin-left: 10px
-@media screen and (max-width : 1900px)
-  .container
-    max-width: 1600px
-@media screen and (max-width : 1600px)
-  .container
-    max-width: 1368px
-    .contact-info
-      height: 700px
-  .vertical-right
-    -webkit-transform-origin: 300px 340px
-    -webkit-transform: rotate(270deg)
-    font-size: 22px
+      float: left
+      margin-top: -10px
+      margin-left: 10px
+
+@include respond-to(1920)
+  @include test($container_max-width: 1900px,
+  $contact-info_height: 750px,
+  $number_font-size: 130px,
+  $email_font-size: 95px,
+  $skype_margin-top: 50px,
+  $skype_div_font-size: 40px,
+  $vertical-right_transform: 300px 340px,
+  $vertical-right_font-size: 26px)
+
+
+@include respond-to(1600)
+  @include test($container_max-width: 1600px,
+  $contact-info_height: 750px,
+  $number_font-size: 130px,
+  $email_font-size: 95px,
+  $skype_margin-top: 50px,
+  $skype_div_font-size: 40px,
+  $vertical-right_transform: 300px 340px,
+  $vertical-right_font-size: 26px)
+
+@include respond-to(1368)
+  @include test($container_max-width: 1368px,
+  $contact-info_height: 700px,
+  $number_font-size: 130px,
+  $email_font-size: 95px,
+  $skype_margin-top: 50px,
+  $skype_div_font-size: 40px,
+  $vertical-right_transform: 300px 340px,
+  $vertical-right_font-size: 22px)
+
+@include respond-to(1280)
+  @include test($container_max-width: 1280px,
+  $contact-info_height: 650px,
+  $number_font-size: 130px,
+  $email_font-size: 95px,
+  $skype_margin-top: 50px,
+  $skype_div_font-size: 40px,
+  $vertical-right_transform: 300px 340px,
+  $vertical-right_font-size: 22px)
+
+
+@include respond-to(1024)
+  @include test($container_max-width: 1024px,
+  $contact-info_height: 550px,
+  $number_font-size: 101px,
+  $email_font-size: 73px,
+  $skype_margin-top: 30px,
+  $skype_div_font-size: 33px,
+  $vertical-right_transform: 200px 230px,
+  $vertical-right_font-size: 15px)
