@@ -1,0 +1,74 @@
+$yellow: #FFCD32
+$dark-grey: #353534
+.container, .contact-info, .vertical-right
+  transition: 1s
+
+.clear
+  clear: both
+.vertical-right
+  white-space: nowrap
+  float: right
+  width: 0
+  letter-spacing: 10px
+  height: 0
+  -webkit-transform-origin: 300px 340px
+  -webkit-transform: rotate(270deg)
+  font-size: 26px
+
+
+@media screen and (max-width : 2000px)
+  .container
+    margin: auto
+    max-width: 1900px
+    color: white
+    font-family: "Circe", serif
+  .menu-icon
+    font-size : 40px
+    font-weight : bolder
+  .contact-info
+    background-color: $dark-grey
+    text-align: center
+    height: 750px
+    &:before
+      height: 100%
+      display: inline-block
+      vertical-align: middle
+      content: ''
+    .wrap
+      display: inline-block
+      white-space: normal
+      vertical-align: middle
+      text-align: center
+    .number
+      color: $yellow
+      font-size: 130px
+      font-weight: bold
+    .email
+      font-size: 95px
+      font-family: "Circe Light", serif
+    .skype
+      margin-top: 50px
+      overflow: hidden
+      display: inline-block
+      text-align: center
+      img
+        float: left
+      div
+        vertical-align: middle
+        color: $yellow
+        float: left
+        font-size: 40px
+        margin-top: -10px
+        margin-left: 10px
+@media screen and (max-width : 1900px)
+  .container
+    max-width: 1600px
+@media screen and (max-width : 1600px)
+  .container
+    max-width: 1368px
+    .contact-info
+      height: 700px
+  .vertical-right
+    -webkit-transform-origin: 300px 340px
+    -webkit-transform: rotate(270deg)
+    font-size: 22px
