@@ -7,6 +7,7 @@ var webserver = require('gulp-webserver');
 var jade = require('gulp-jade');
 var sass = require('gulp-sass');
 var data = require('gulp-data');
+var jsoncombine = require("gulp-jsoncombine");
 
 gulp.task('webserver', function() {
     return gulp.src('app/debug')
@@ -26,17 +27,29 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('app/debug/styles'));
 });
 
-gulp.task('jade', function() {
+gulp.task('jade', ['jsoncombine'], function() {
     //var YOUR_LOCALS = {};
 
-    return gulp.src('app/src/jade/**/*.jade')
+    return gulp.src(['app/src/jade/**/*.jade',"!app/src/jade/**/_*.jade"])
         .pipe(data( function(file) {
-            return require('./app/src/jade/index.jade.json');
+            return require('./app/debug/result.json');
         } ))
         .pipe(jade({
             //locals: YOUR_LOCALS
+        }).on('error', function(er) {console.log(er);}))
+        .pipe(gulp.dest('app/debug/'));
+});
+gulp.task('jsoncombine', function(){
+    return gulp.src("app/src/jade/**/*.json")
+        .pipe(jsoncombine("result.json",function(data){
+            var res = {};
+            for(var i in data){
+                var keyName = Object.keys(data[i])[0];
+                res[keyName] = data[i][keyName];
+            }
+            return new Buffer(JSON.stringify(res));
         }))
-        .pipe(gulp.dest('app/debug/'))
+        .pipe(gulp.dest("app/debug"));
 });
 
 gulp.task('watch', ['jade','sass'], function(){

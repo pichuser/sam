@@ -6,6 +6,7 @@
     "gulp-webserver": "~0.9.1",
     "gulp-jade": "~1.1.0",
     "gulp-sass": "~2.0.4",
-    "gulp-data": "~1.2.0"
+    "gulp-data": "~1.2.0",
+    "gulp-jsoncombine": "~1.0.3"
   }
 }
