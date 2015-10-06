@@ -6,6 +6,7 @@ var gulp = require('gulp');
 var webserver = require('gulp-webserver');
 var jade = require('gulp-jade');
 var sass = require('gulp-sass');
+var data = require('gulp-data');
 
 gulp.task('webserver', function() {
     return gulp.src('app/debug')
@@ -20,23 +21,26 @@ gulp.task('webserver', function() {
 });
 
 gulp.task('sass', function () {
-    return gulp.src('app/src/sass/**/*.sass')
+    return gulp.src('app/src/scss/**/*.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('app/debug'));
+        .pipe(gulp.dest('app/debug/styles'));
 });
 
 gulp.task('jade', function() {
-    var YOUR_LOCALS = {};
+    //var YOUR_LOCALS = {};
 
     return gulp.src('app/src/jade/**/*.jade')
+        .pipe(data( function(file) {
+            return require('./app/src/jade/index.jade.json');
+        } ))
         .pipe(jade({
-            locals: YOUR_LOCALS
+            //locals: YOUR_LOCALS
         }))
         .pipe(gulp.dest('app/debug/'))
 });
 
 gulp.task('watch', ['jade','sass'], function(){
-    gulp.watch('app/src/sass/**/*.sass', ['sass']);
+    gulp.watch('app/src/scss/**/*.scss', ['sass']);
     gulp.watch('app/src/jade/**/*.jade', ['jade']);
     gulp.run('webserver');
 });
