@@ -1,10 +1,24 @@
 div.header-menu
-    div.menu-icon.left-align ≡
+    div.menu-icon(style="text-align: left;")
+        div
+            input(type="checkbox",id="testcheck", style="display:none")
+            label.menu-click(for='testcheck', style="display:block;")
+                include ../img/menu_icon_plain_svg.txt
+            div.menu-click(style="display:none;-webkit-transform: rotate(0deg);")
+                |выпадающее меню
     div
         div.dashed Заказать вебинар
     div
-        img(src='img/duck_mid.svg')
+        img.main-logo(src='img/duck_mid.svg')
     div
         div.dashed Контактная информация
-    div.righ-align иконки
+    div(style="text-align: right;")
+        div.icons
+            div
+                img(src='img/facebook_icon.svg')
+            div
+                img(src="img/vk_icon.svg")
+            div
+                img(src="img/gplus_icon.svg")
+
 

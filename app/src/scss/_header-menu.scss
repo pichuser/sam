@@ -1,4 +1,33 @@
 $pad: 30px;
+input:checked ~ .menu-click{
+  color: red;
+  -webkit-transform: rotate(90deg);
+  -webkit-transform-origin: 27px 15px;
+  display: block !important;
+line{
+  stroke: yellow;
+}
+}
+.header-menu {
+  .menu-icon {
+    font-weight: bolder;
+    font-size: 50px;
+    line{
+      transition: 1s;
+    }
+    label {
+      transition: 1s;
+      width: 55px;
+      height: 30px;
+    }
+    div{
+      margin-left: 10px;
+    }
+  }
+  .main-logo {
+    margin-top: -$pad;
+  }
+}
 .header-menu > div {
   float: left;
   width: 20%;
@@ -10,11 +39,13 @@ $pad: 30px;
   white-space: nowrap;
   height: 70px;
   padding-top: $pad + 10px;
-  img {
-    margin-top: -$pad;
-  }
   .dashed {
     display: inline-block;
     border-bottom: dashed black 2px;
+  }
+  .icons div{
+    float: right;
+    margin-right: 10px;
+    margin-top: - 5px;
   }
 }
