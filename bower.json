@@ -1,0 +1,20 @@
+{
+  "name": "TestSamocat",
+  "version": "0.0.1",
+  "homepage": "https://github.com/pichuser/sam",
+  "authors": [
+    "pichuser <pichuser@mail.ru>"
+  ],
+  "description": "learning",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "Scut": "scut#~1.2.1"
+  }
+}
