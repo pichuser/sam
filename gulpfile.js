@@ -54,7 +54,7 @@ gulp.task('jsoncombine', function(){
 
 gulp.task('watch', ['jade','sass', 'copyimages', 'copyfonts'], function(){
     gulp.watch('app/src/scss/**/*.scss', ['sass']);
-    gulp.watch('app/src/jade/**/*.jade', ['jade']);
+    gulp.watch(['app/src/jade/**/*.jade', 'app/src/jade/**/*.json'], ['jade']);
     gulp.run('webserver');
 });
 

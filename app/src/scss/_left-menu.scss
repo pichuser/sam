@@ -1,0 +1,12 @@
+.left-menu{
+  width: 350px;
+  font-size: 18px;
+  letter-spacing: normal;
+  .item > div{
+    float: left;
+  }
+  .get-webinar > div {
+    float: left;
+    background-color: $yellow;
+  }
+}

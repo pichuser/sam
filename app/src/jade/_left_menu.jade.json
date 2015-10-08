@@ -1,0 +1,18 @@
+{
+  "left_menu": {
+    "items": [
+      {
+        "imgUrl": "img/left_menu_education.svg",
+        "name": "Обучение"
+      },
+      {
+        "imgUrl": "img/left_menu_webinar.svg",
+        "name": "Календарь вебинаров"
+      },
+      {
+        "imgUrl": "img/left_menu_blogs.svg",
+        "name": "Статьи"
+      }
+    ]
+  }
+}
