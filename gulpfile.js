@@ -3,44 +3,46 @@
  */
 'use strict';
 var gulp = require('gulp');
-var webserver = require('gulp-webserver');
+var browserSync = require('browser-sync');
 var jade = require('gulp-jade');
 var sass = require('gulp-sass');
 var data = require('gulp-data');
 var jsoncombine = require("gulp-jsoncombine");
 
+function requireUncached( $module ) {
+    delete require.cache[require.resolve( $module )];
+    return require( $module );
+}
+
 gulp.task('webserver', function() {
-    return gulp.src('app/debug')
-        .pipe(webserver({
-            livereload: true,
-            //directoryListing: true,
-            open: true,
-            fallback: 'index.html',
-            port: 8001,
-            host: '192.168.3.120'
-        }));
+    browserSync.init({
+        server: {
+            baseDir: "dist"
+        },
+        files: ["dist/index.html", "dist/**/*.css"]
+    });
 });
 
 gulp.task('sass', function () {
-    return gulp.src(['app/src/scss/**/*.scss', '!app/src/scss/**/_*.scss'])
+    return gulp.src(['src/scss/**/*.scss', '!src/scss/**/_*.scss'])
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('app/debug/styles'));
+        .pipe(gulp.dest('dist/styles'));
 });
 
 gulp.task('jade', ['jsoncombine'], function() {
     //var YOUR_LOCALS = {};
 
-    return gulp.src(['app/src/jade/**/*.jade',"!app/src/jade/**/_*.jade"])
+    return gulp.src(['src/jade/**/*.jade',"!src/jade/**/_*.jade"])
         .pipe(data( function(file) {
-            return require('./app/debug/result.json');
+            return requireUncached('./dist/result.json');
         } ))
         .pipe(jade({
             //locals: YOUR_LOCALS
         }).on('error', function(er) {console.log(er);}))
-        .pipe(gulp.dest('app/debug/'));
+        .pipe(gulp.dest('dist/'));
 });
 gulp.task('jsoncombine', function(){
-    return gulp.src("app/src/jade/**/*.json")
+    return gulp.src("src/jade/**/*.json")
         .pipe(jsoncombine("result.json",function(data){
             var res = {};
             for(var i in data){
@@ -49,22 +51,22 @@ gulp.task('jsoncombine', function(){
             }
             return new Buffer(JSON.stringify(res));
         }))
-        .pipe(gulp.dest("app/debug"));
+        .pipe(gulp.dest("dist/"));
 });
 
 gulp.task('watch', ['jade','sass', 'copyimages', 'copyfonts'], function(){
-    gulp.watch('app/src/scss/**/*.scss', ['sass']);
-    gulp.watch(['app/src/jade/**/*.jade', 'app/src/jade/**/*.json'], ['jade']);
+    gulp.watch('src/scss/**/*.scss', ['sass']);
+    gulp.watch(['src/jade/**/*.jade', 'src/jade/**/*.json'], ['jade']);
     gulp.run('webserver');
 });
 
 gulp.task('copyimages', function(){
-    return  gulp.src('app/src/img/**/*')
-        .pipe(gulp.dest('app/debug/img'));
+    return  gulp.src('src/img/**/*')
+        .pipe(gulp.dest('dist/img'));
 });
 gulp.task('copyfonts', function(){
-    return  gulp.src('app/src/font/**/*')
-        .pipe(gulp.dest('app/debug/font'));
+    return  gulp.src('src/font/**/*')
+        .pipe(gulp.dest('dist/font'));
 });
 
 gulp.task('default', ['watch']);
