@@ -5,13 +5,13 @@
   .item > div{
     float: left;
     .left_menu_education{
-      @include base64img("left_menu_education.svg");
+      @include base64img("left_menu_education", true);
     }
     .left_menu_webinar{
-      @include base64img("left_menu_webinar.svg");
+      @include base64img("left_menu_webinar", true);
     }
     .left_menu_blogs{
-       @include base64img("left_menu_blogs.svg");
+       @include base64img("left_menu_blogs", true);
      }
   }
   .get-webinar > div {

@@ -8,9 +8,14 @@ var jade = require('gulp-jade');
 var sass = require('gulp-sass');
 var data = require('gulp-data');
 var jsoncombine = require("gulp-jsoncombine");
-var base64 = require("gulp-base64");
-var concat = require("gulp-concat");
 var compassImagehelper = require('gulp-compass-imagehelper');
+var svg2png = require('gulp-svg2png');
+
+gulp.task('svg2png', function () {
+    gulp.src('src/img/**/*.svg')
+        .pipe(svg2png())
+        .pipe(gulp.dest('src/img/'));
+});
 
 function requireUncached( $module ) {
     delete require.cache[require.resolve( $module )];
@@ -28,7 +33,19 @@ gulp.task('webserver', function() {
     });
 });
 
-gulp.task('sass', function () {
+function log(error) {
+    console.log([
+        '',
+        "----------ERROR MESSAGE START----------",
+        ("[" + error.name + " in " + error.plugin + "]"),
+        error.message,
+        "----------ERROR MESSAGE END----------",
+        ''
+    ].join('\n'));
+    this.end();
+}
+
+gulp.task('sass',['compass-imagehelper'], function () {
     return gulp.src(['src/scss/**/*.scss', '!src/scss/**/_*.scss'])
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('dist/styles'));
@@ -43,7 +60,7 @@ gulp.task('jade', ['jsoncombine'], function() {
         } ))
         .pipe(jade({
             //locals: YOUR_LOCALS
-        }).on('error', function(er) {console.log(er);}))
+        }).on('error', log))
         .pipe(gulp.dest('dist/'));
 });
 gulp.task('jsoncombine', function(){
@@ -65,7 +82,7 @@ gulp.task('watch', ['jade','sass', 'copyimages', 'copyfonts'], function(){
     gulp.run('webserver');
 });
 
-gulp.task('copyimages', function(){
+gulp.task('copyimages', ['svg2png'], function(){
     return  gulp.src('src/img/**/*')
         .pipe(gulp.dest('dist/img'));
 });
@@ -73,6 +90,7 @@ gulp.task('copyfonts', function(){
     return  gulp.src('src/font/**/*')
         .pipe(gulp.dest('dist/font'));
 });
+
 
 gulp.task('compass-imagehelper', function (cb) {
     return gulp.src('src/img/toBase64/**/*')
@@ -86,17 +104,6 @@ gulp.task('compass-imagehelper', function (cb) {
         .pipe(gulp.dest('src/scss'));
 });
 
-gulp.task('toBase64', function () {
-    return gulp.src('dist/styles/*.css')
-        .pipe(base64({
-            baseDir: 'dist/styles',
-            extensions: ['svg', 'png', /\.jpg#datauri$/i],
-            exclude:    [/\.server\.(com|net)\/dynamic\//, '--live.jpg'],
-            debug: true
-        }))
-        .pipe(concat('main.css'))
-        .pipe(gulp.dest('dist/public/css'));
-});
 
 
 gulp.task('default', ['watch']);

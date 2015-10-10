@@ -1,0 +1,16 @@
+$type: '.png';
+@mixin base64img($image_name, $custom_type: false) {
+  @if ($custom_type){
+    $img : $image_name + $type;
+  } @else {
+    $img: $image_name;
+  }
+  background-image: inline-image($img);
+  //background-image: none,url('../img/toBase64/' + $img);
+  background-repeat: no-repeat;
+  width: image-width($img);
+  height: image-height($img); /*or your image's height*/
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}

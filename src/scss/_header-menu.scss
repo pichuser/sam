@@ -27,7 +27,7 @@ line{
   .main-logo {
     margin-top: -$pad;
     .duck_mid {
-      @include base64img("duck_mid.svg");
+      @include base64img("duck_mid", true);
     }
   }
 }
@@ -51,13 +51,13 @@ line{
     margin-right: 10px;
     margin-top: - 5px;
     .facebook_icon{
-      @include base64img("facebook_icon.svg");
+      @include base64img("facebook_icon", true);
     }
     .vk_icon{
-      @include base64img("vk_icon.svg");
+      @include base64img("vk_icon", true);
     }
     .gplus_icon{
-      @include base64img("gplus_icon.svg");
+      @include base64img("gplus_icon", true);
     }
   }
 }
