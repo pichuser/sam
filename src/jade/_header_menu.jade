@@ -3,22 +3,23 @@ div.header-menu
         div
             input(type="checkbox",id="testcheck", style="display:none")
             label.menu-click(for='testcheck', style="display:block;")
-                include ../img/menu_icon_plain_svg.txt
+                include ../img/toBase64/menu_icon_plain_svg.txt
             div.menu-click(style="display:none;-webkit-transform: rotate(0deg);")
                 include _left_menu
     div
         div.dashed Заказать вебинар
     div
-        img.main-logo(src='img/duck_mid.svg')
+        div.main-logo
+            div.duck_mid
     div
         div.dashed Контактная информация
     div(style="text-align: right;")
         div.icons
             div
-                img(src='img/facebook_icon.svg')
+                div.facebook_icon
             div
-                img(src="img/vk_icon.svg")
+                div.vk_icon
             div
-                img(src="img/gplus_icon.svg")
+                div.gplus_icon
 
 

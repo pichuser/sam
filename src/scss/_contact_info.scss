@@ -24,6 +24,10 @@ $vertical-right_font-size) {
         div {
           font-size: $skype_div_font-size;
         }
+        .skype-image
+        {
+          @include base64img("skype.png");
+        }
       }
     }
     .vertical-right {

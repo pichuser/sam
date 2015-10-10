@@ -1,3 +1,4 @@
+@import "compass-imagehelper";
 $pad: 30px;
 input:checked ~ .menu-click{
   -webkit-transform: rotate(90deg);
@@ -25,6 +26,9 @@ line{
   }
   .main-logo {
     margin-top: -$pad;
+    .duck_mid {
+      @include base64img("duck_mid.svg");
+    }
   }
 }
 .header-menu > div {
@@ -46,5 +50,14 @@ line{
     float: right;
     margin-right: 10px;
     margin-top: - 5px;
+    .facebook_icon{
+      @include base64img("facebook_icon.svg");
+    }
+    .vk_icon{
+      @include base64img("vk_icon.svg");
+    }
+    .gplus_icon{
+      @include base64img("gplus_icon.svg");
+    }
   }
 }

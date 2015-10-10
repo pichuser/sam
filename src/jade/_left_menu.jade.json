@@ -2,15 +2,18 @@
   "left_menu": {
     "items": [
       {
-        "imgUrl": "img/left_menu_education.svg",
+        "img_name": "left_menu_education.svg",
+        "class": "left_menu_education",
         "name": "Обучение"
       },
       {
-        "imgUrl": "img/left_menu_webinar.svg",
+        "img_name": "left_menu_webinar.svg",
+        "class": "left_menu_webinar",
         "name": "Календарь вебинаров"
       },
       {
-        "imgUrl": "img/left_menu_blogs.svg",
+        "img_name": "left_menu_blogs.svg",
+        "class": "left_menu_blogs",
         "name": "Статьи"
       }
     ]
