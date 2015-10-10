@@ -4,6 +4,15 @@
   letter-spacing: normal;
   .item > div{
     float: left;
+    .left_menu_education{
+      @include base64img("left_menu_education.svg");
+    }
+    .left_menu_webinar{
+      @include base64img("left_menu_webinar.svg");
+    }
+    .left_menu_blogs{
+       @include base64img("left_menu_blogs.svg");
+     }
   }
   .get-webinar > div {
     float: left;

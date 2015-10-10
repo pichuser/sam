@@ -1,0 +1,9 @@
+@mixin base64img($image_name) {
+  background-image: inline-image($image_name);
+  background-repeat: no-repeat;
+  width: image-width($image_name);
+  height: image-height($image_name); /*or your image's height*/
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
