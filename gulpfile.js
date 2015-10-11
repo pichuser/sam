@@ -10,6 +10,18 @@ var data = require('gulp-data');
 var jsoncombine = require("gulp-jsoncombine");
 var compassImagehelper = require('gulp-compass-imagehelper');
 var svg2png = require('gulp-svg2png');
+var minifyCss = require('gulp-minify-css');
+var rename = require('gulp-rename');
+
+gulp.task('minify-css', ['sass'], function() {
+    return gulp.src('dist/styles/main.css')
+        .pipe(minifyCss(
+           // {compatibility: 'ie8'}
+        ))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest('dist/styles'));
+});
+
 
 gulp.task('svg2png', function () {
     gulp.src('src/img/**/*.svg')
@@ -76,8 +88,8 @@ gulp.task('jsoncombine', function(){
         .pipe(gulp.dest("dist/"));
 });
 
-gulp.task('watch', ['jade','sass', 'copyimages', 'copyfonts'], function(){
-    gulp.watch('src/scss/**/*.scss', ['sass']);
+gulp.task('watch', ['jade','minify-css', 'copyimages', 'copyfonts'], function(){
+    gulp.watch('src/scss/**/*.scss', ['minify-css']);
     gulp.watch(['src/jade/**/*.jade', 'src/jade/**/*.json'], ['jade']);
     gulp.run('webserver');
 });

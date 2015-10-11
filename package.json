@@ -9,6 +9,8 @@
     "gulp-jsoncombine": "~1.0.3",
     "browser-sync": "~2.9.10",
     "gulp-compass-imagehelper": "~0.2.10",
-    "gulp-svg2png": "~0.3.0"
+    "gulp-svg2png": "~0.3.0",
+    "gulp-minify-css": "~1.2.1",
+    "gulp-rename": "~1.2.2"
   }
 }
