@@ -1,14 +1,18 @@
 div.left-menu
-   each val in left_menu.items
-      div.item
-         div
-            div(class= val.class)
-         div= val.name
-         div.clear
-   div.get-webinar
-      div Заказать вебинар
-      div.clear
-
-
+   div.menu-icon(style="text-align: left;")
+      input(type="checkbox",id="testcheck", style="display:none")
+      label.menu-click(for='testcheck', style="display:block;")
+         include ../img/toBase64/menu_icon_plain_svg.txt
+      div.menu-click(style="display:none;-webkit-transform: rotate(0deg);width:100%;")
+         each val in left_menu.items
+            div.item
+               div
+                  div(class= val.class)
+               div= val.name
+               div.clear
+         div.get-webinar
+            div Заказать вебинар
+            div.clear
+         include _contact_info
 
 

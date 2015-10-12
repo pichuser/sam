@@ -10,6 +10,10 @@ $skype_div_font-size,
 $vertical-right_transform,
 $vertical-right_font-size) {
   .container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     max-width: $container_max-width;
     .contact-info {
       height: $contact-info_height;
@@ -54,7 +58,11 @@ $vertical-right_font-size) {
       @content
     }
   } @else if ($media == 1024) {
-    @media only screen and (max-width: 1024px) {
+    @media only screen and (max-width: 1024px) and (min-width: 980px) {
+      @content
+    }
+  }@else if ($media == 980) {
+    @media only screen and (max-width: 980px) {
       @content
     }
   }
@@ -178,4 +186,31 @@ $vertical-right_font-size) {
   $skype_div_font-size: 33px,
   $vertical-right_transform: 200px 230px,
   $vertical-right_font-size: 15px)
+}
+
+@include respond-to(980){
+  .container {
+    .contact-info {
+      height: 370px;
+      .number {
+        font-size: 15px;
+      }
+      .email {
+        font-size: 15px;
+      }
+      .skype {
+        margin-top: 0;
+        div {
+          font-size: 15px;
+        }
+        .skype-image
+        {
+          @include base64img("skype.png");
+        }
+      }
+    }
+    .vertical-right {
+      display:none;
+    }
+  }
 }

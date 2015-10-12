@@ -1,21 +1,48 @@
-.left-menu{
-  width: 350px;
+input:checked ~ .menu-click {
+  -webkit-transform: rotate(90deg);
+  -webkit-transform-origin: 27px 15px;
+  display: block !important;
+  line {
+    stroke: yellow;
+  }
+}
+
+.left-menu {
+  .menu-icon {
+    font-weight: bolder;
+    font-size: 50px;
+    line {
+      transition: 1s;
+    }
+    label {
+      transition: 1s;
+      width: 55px;
+      //height: 30px;
+      height: 0;
+    }
+  }
   font-size: 18px;
   letter-spacing: normal;
-  .item > div{
+  .item > div {
     float: left;
-    .left_menu_education{
+    .left_menu_education {
       @include base64img("left_menu_education", true);
     }
-    .left_menu_webinar{
+    .left_menu_webinar {
       @include base64img("left_menu_webinar", true);
     }
-    .left_menu_blogs{
-       @include base64img("left_menu_blogs", true);
-     }
+    .left_menu_blogs {
+      @include base64img("left_menu_blogs", true);
+    }
   }
   .get-webinar > div {
     float: left;
     background-color: $yellow;
+  }
+}
+
+@media screen and (max-width: 980px){
+  .left-menu{
+    width: 300px;
   }
 }
