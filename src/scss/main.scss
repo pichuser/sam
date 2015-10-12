@@ -1,6 +1,12 @@
+@import "general_classes";
 @import "compass-imagehelper";
 @import "mixins";
 @import "fonts";
 @import 'contact_info';
 @import "header-menu";
 @import "left-menu";
+@import "footer";
+@import "header";
+body{
+  margin: 0
+}

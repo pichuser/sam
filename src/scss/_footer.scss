@@ -1,0 +1,15 @@
+@import "../../bower_components/Scut/dist/_scut.scss";
+.site-footer{
+  background-color: $dark-grey;
+  font-size: 12px;
+  font-family: "Circe", serif;
+  font-style: normal;
+  color: white;
+  @include scut-fixed(n n 0 n);
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px;
+  address{
+    font: inherit;
+  }
+}

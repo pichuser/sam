@@ -1,5 +1,4 @@
-$yellow: #FFCD32;
-$dark-grey: #353534;
+
 
 @mixin test($container_max-width,
 $contact-info_height,
@@ -78,9 +77,7 @@ $vertical-right_font-size) {
   font-family: "Circe", serif;
 }
 
-.clear {
-  clear: both;
-}
+
 
 .vertical-right {
   white-space: nowrap;

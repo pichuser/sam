@@ -1,25 +1,37 @@
-input:checked ~ .menu-click {
+#testcheck:checked ~ .menu-icon {
   -webkit-transform: rotate(90deg);
   -webkit-transform-origin: 27px 15px;
-  display: block !important;
   line {
     stroke: yellow;
   }
 }
 
+#testcheck:checked ~ .menu {
+  -webkit-transform: rotate(90deg);
+  -webkit-transform-origin: 27px 15px;
+  display: block !important;
+}
+
+#open_contacts:checked ~ .contact-info {
+  display: block !important;
+}
+.menu{
+  width: 300px;
+}
+
 .left-menu {
-  .menu-icon {
-    font-weight: bolder;
-    font-size: 50px;
-    line {
-      transition: 1s;
-    }
-    label {
-      transition: 1s;
-      width: 55px;
-      //height: 30px;
-      height: 0;
-    }
+  @include scut-fixed(0 n n 0);
+  width: 100%;
+  height: 0;
+  font-weight: bolder;
+  line {
+    transition: 1s;
+  }
+  label {
+    transition: 1s;
+    width: 55px;
+    height: 30px;
+    //height: 0;
   }
   font-size: 18px;
   letter-spacing: normal;
@@ -41,8 +53,8 @@ input:checked ~ .menu-click {
   }
 }
 
-@media screen and (max-width: 980px){
-  .left-menu{
+@media screen and (max-width: 980px) {
+  .left-menu {
     width: 300px;
   }
 }

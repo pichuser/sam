@@ -1,0 +1,30 @@
+@import "../../bower_components/Scut/dist/_scut.scss";
+.header > div {
+  text-align: center;
+  width: 20%;
+  float:left;
+}
+.header{
+  @include scut-fixed(0 n n n);
+  width: 100%;
+}
+.main-logo {
+  .duck_mid {
+    @include base64img("duck_mid", true);
+  }
+}
+.soc-icons {
+  @include scut-fixed(0 0 n n);
+  .icon{
+    float:left;
+  }
+  .facebook_icon {
+    @include base64img("facebook_icon", true);
+  }
+  .vk_icon {
+    @include base64img("vk_icon", true);
+  }
+  .gplus_icon {
+    @include base64img("gplus_icon", true);
+  }
+}

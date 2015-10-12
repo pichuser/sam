@@ -84,7 +84,7 @@ gulp.task('jsoncombine', function(){
                 res[keyName] = data[i][keyName];
             }
             return new Buffer(JSON.stringify(res));
-        }))
+        }).on('error', log))
         .pipe(gulp.dest("dist/"));
 });
 
