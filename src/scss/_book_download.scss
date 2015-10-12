@@ -1,0 +1,22 @@
+.book-download{
+  text-align: center;
+  background-color: $yellow;
+  box-sizing: border-box;
+  padding: 20px;
+  .text{
+    max-width: 1165px;
+    font-size: 36px;
+    margin: auto;
+  }
+  .download-book{
+    width: 250px;
+    height: 50px;
+    border: none;
+    background-color: $dark-grey;
+    color: white;
+    font-size: 22px;
+    span{
+      border-bottom: dashed 1px white;
+    }
+  }
+}

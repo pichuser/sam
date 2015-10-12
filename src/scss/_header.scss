@@ -5,8 +5,12 @@
   float:left;
 }
 .header{
+  background-color: white;
   @include scut-fixed(0 n n n);
   width: 100%;
+}
+.empty-space{
+  height: 100px;
 }
 .main-logo {
   .duck_mid {

@@ -1,1 +1,9 @@
-div Вебинары
+div.webinars
+    h1 Календарь вебинаров
+    div Узнайте о вебинарах, проходящих в ближайшее время
+    div.items
+        each val in webinars.items
+            div.item
+                div.date= val.date
+                div.month= val.month
+                div.text= val.text
