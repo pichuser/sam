@@ -3,7 +3,7 @@ div.left-menu
     input(type="checkbox",id="open_contacts", style="display:none")
     label.menu-icon(for='testcheck', style="display:block;")
         include ../img/toBase64/menu_icon_plain_svg.txt
-    nav.menu(style="display:none;-webkit-transform: rotate(0deg);width:100%;")
+    nav.menu(style="display:none;-webkit-transform: rotate(0deg);")
         each val in left_menu.items
             div.item
                 div
@@ -12,7 +12,6 @@ div.left-menu
                 div.clear
         div.get-webinar
             div Заказать вебинар
-            div.clear
     div.contact-info(style="display:none")
         include _contact_info
 

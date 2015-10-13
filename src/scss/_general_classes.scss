@@ -1,5 +1,6 @@
 $yellow: #FFCD32;
 $dark-grey: #353534;
+$blue: #95B6DD;
 
 .float-right{
   float: right;
@@ -11,7 +12,8 @@ $dark-grey: #353534;
   color: $yellow;
 }
 .clear {
-  clear: both;
+  clear: both !important;
+  float: none !important;
 }
 .abs-center{
   text-align: center;

@@ -1,4 +1,10 @@
--var n = 0;
-while n < 100
-    div Статьи
-    -n++;
+div.articles
+    h1 СТАТЬИ
+    div.item
+        each val in articles.items
+            div.date= val.date
+            div.title= val.title
+            div.text= val.text
+            hr
+    button.btn-all-articles
+        span Все статьи

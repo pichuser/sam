@@ -16,7 +16,11 @@
   display: block !important;
 }
 .menu{
-  width: 300px;
+  width: 350px;
+  background-color: white;
+  .item{
+    padding: 20px;
+  }
 }
 
 .left-menu {
@@ -35,21 +39,30 @@
   }
   font-size: 18px;
   letter-spacing: normal;
+  .item{
+    border: solid 1px gray;
+    border-bottom: none;
+  }
   .item > div {
     float: left;
     .left_menu_education {
       @include base64img("left_menu_education", true);
+      margin-right: 20px;
     }
     .left_menu_webinar {
       @include base64img("left_menu_webinar", true);
+      margin-right: 20px;
     }
     .left_menu_blogs {
       @include base64img("left_menu_blogs", true);
+      margin-right: 20px;
     }
   }
   .get-webinar > div {
-    float: left;
     background-color: $yellow;
+    padding: 20px;
+    border: solid 1px gray;
+
   }
 }
 
