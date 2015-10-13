@@ -1,3 +1,4 @@
+@import "../../bower_components/Scut/dist/_scut.scss";
 #testcheck:checked ~ .menu-icon {
   -webkit-transform: rotate(90deg);
   -webkit-transform-origin: 27px 15px;
@@ -9,17 +10,57 @@
 #testcheck:checked ~ .menu {
   -webkit-transform: rotate(90deg);
   -webkit-transform-origin: 27px 15px;
-  display: block !important;
+  visibility: visible !important;
 }
 
 #open_contacts:checked ~ .contact-info {
-  display: block !important;
+  visibility: visible !important;
+}
+
+@media screen and (max-width: 980px){
+  #testcheck:checked ~ .contact-info {
+    visibility: visible !important;
+  }
+  #testcheck:checked ~ .soc-icons {
+    visibility: visible !important;
+  }
+  .lbl-contact-info, .lbl-get-webinar{
+    visibility: hidden;
+  }
+}
+@media screen and (min-width: 980px) {
+  .soc-icons {
+    @include scut-fixed(0 0 n n);
+  }
+}
+@media screen and (max-width: 980px) {
+  .soc-icons {
+    background-color: $dark-grey;
+    visibility: hidden;
+  }
+}
+.soc-icons {
+  .icon {
+    float: left;
+    margin: 5px;
+  }
+  .facebook_icon {
+    @include base64img("facebook_icon", true);
+  }
+  .vk_icon {
+    @include base64img("vk_icon", true);
+  }
+  .gplus_icon {
+    @include base64img("gplus_icon", true);
+  }
 }
 .menu{
-  width: 350px;
+  width: 30%;
+  min-width: 270px;
+  max-width: 350px;
   background-color: white;
   .item{
-    padding: 20px;
+    padding: 7%;
   }
 }
 
@@ -31,7 +72,7 @@
   line {
     transition: 1s;
   }
-  label {
+  label.menu-icon {
     transition: 1s;
     width: 55px;
     height: 30px;
@@ -60,14 +101,29 @@
   }
   .get-webinar > div {
     background-color: $yellow;
-    padding: 20px;
+    padding: 7%;
     border: solid 1px gray;
 
   }
 }
 
+
 @media screen and (max-width: 980px) {
-  .left-menu {
-    width: 300px;
+  .contact-info, .soc-icons {
+    width: 30%;
+    min-width: 270px;
+    max-width: 350px;
+  }
+  .soc-icons{
+    box-sizing: border-box;
+    padding: 2%;
+  }
+  .icon svg {
+    path, tspan {
+      fill: white;
+    }
+    rect{
+      stroke: $yellow;
+    }
   }
 }

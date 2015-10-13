@@ -17,18 +17,3 @@
     @include base64img("duck_mid", true);
   }
 }
-.soc-icons {
-  @include scut-fixed(0 0 n n);
-  .icon{
-    float:left;
-  }
-  .facebook_icon {
-    @include base64img("facebook_icon", true);
-  }
-  .vk_icon {
-    @include base64img("vk_icon", true);
-  }
-  .gplus_icon {
-    @include base64img("gplus_icon", true);
-  }
-}

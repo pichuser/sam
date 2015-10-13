@@ -1,9 +1,8 @@
 div.left-menu
     input(type="checkbox",id="testcheck", style="display:none")
-    input(type="checkbox",id="open_contacts", style="display:none")
     label.menu-icon(for='testcheck', style="display:block;")
         include ../img/toBase64/menu_icon_plain_svg.txt
-    nav.menu(style="display:none;-webkit-transform: rotate(0deg);")
+    nav.menu(style="visibility:hidden;-webkit-transform: rotate(0deg);")
         each val in left_menu.items
             div.item
                 div
@@ -12,7 +11,20 @@ div.left-menu
                 div.clear
         div.get-webinar
             div Заказать вебинар
-    div.contact-info(style="display:none")
+    input(type="checkbox",id="open_contacts", style="display:none")
+    div.contact-info(style="visibility:hidden")
         include _contact_info
+    div.soc-icons
+        div.icon
+            include ../img/toBase64/facebook_icon.svg
+            //div.facebook_icon
+        div.icon
+            include ../img/toBase64/vk_icon.svg
+            //div.vk_icon
+        div.icon
+            include ../img/toBase64/gplus_icon.svg
+            //div.gplus_icon
+        div.icon
+        div.clear
 
 

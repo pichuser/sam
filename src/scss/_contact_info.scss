@@ -68,7 +68,7 @@ $vertical-right_font-size) {
 }
 
 .container, .contact-info, .vertical-right {
-  transition: 1s;
+ // transition: 1s;
 }
 
 .container {
@@ -88,44 +88,45 @@ $vertical-right_font-size) {
   -webkit-transform: rotate(270deg);
   font-size: 26px;
 }
-
-.contact-info {
-  background-color: $dark-grey;
-  text-align: center;
-
-  &:before {
-    height: 100%;
-    display: inline-block;
-    vertical-align: middle;
-    content: '';
-  }
-  .wrap {
-    display: inline-block;
-    white-space: normal;
-    vertical-align: middle;
+@media screen and(min-width: 980px) {
+  .contact-info {
+    background-color: $dark-grey;
     text-align: center;
-  }
-  .number {
-    color: $yellow;
-    font-weight: bold;
-  }
-  .email {
-    font-family: "Circe Light", serif;
-  }
-  .skype {
-    margin-top: 50px;
-    overflow: hidden;
-    display: inline-block;
-    text-align: center;
-    img {
-      float: left;
-    }
-    div {
+
+    &:before {
+      height: 100%;
+      display: inline-block;
       vertical-align: middle;
+      content: '';
+    }
+    .wrap {
+      display: inline-block;
+      white-space: normal;
+      vertical-align: middle;
+      text-align: center;
+    }
+    .number {
       color: $yellow;
-      float: left;
-      margin-top: -10px;
-      margin-left: 10px;
+      font-weight: bold;
+    }
+    .email {
+      font-family: "Circe Light", serif;
+    }
+    .skype {
+      margin-top: 50px;
+      overflow: hidden;
+      display: inline-block;
+      text-align: center;
+      img {
+        float: left;
+      }
+      div {
+        vertical-align: middle;
+        color: $yellow;
+        float: left;
+        margin-top: -10px;
+        margin-left: 10px;
+      }
     }
   }
 }
@@ -187,8 +188,9 @@ $vertical-right_font-size) {
 
 @include respond-to(980){
   .container {
+    background-color: $dark-grey;
+    padding-top:50%;
     .contact-info {
-      height: 370px;
       .number {
         font-size: 15px;
       }
@@ -203,6 +205,10 @@ $vertical-right_font-size) {
         .skype-image
         {
           @include base64img("skype.png");
+          width: 21px;
+          height: 21px;
+          background-size: 21px 21px;
+          float: left;
         }
       }
     }
