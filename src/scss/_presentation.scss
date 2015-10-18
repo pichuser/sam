@@ -1,13 +1,18 @@
-.presentation {
-  text-align: center;
-  .description{
-    max-width: 780px;
-    margin: auto;
-  }
-  .download-presentation{
-    width: 500px;
-    height: 50px;
-    background-color: white;
-    border: 2px solid black;
-  }
+.presentation__maps
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1200px;
+  margin: auto;
 }
+.presentation{
+  text-align: center;
+  padding-bottom: 100px;
+}
+.presentation__description{
+  max-width: 780px;
+  margin: auto;
+  margin-bottom: 50px;
+}
+

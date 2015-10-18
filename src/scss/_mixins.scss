@@ -1,3 +1,27 @@
+@import "../../node_modules/sass-mediaqueries/media-queries";
+@mixin device_greater_less($min, $max)
+{
+  @include mq ($media-type: "all",  $max-width: $max, $min-width: $min) {
+    @content;
+  }
+}
+@mixin device_less($max)
+{
+  @include mq ($media-type: "all",  $max-width: $max) {
+    @content;
+  }
+}
+@mixin device_greater($min)
+{
+  @include mq ($media-type: "all",  $min-width: $min) {
+    @content;
+  }
+}
+@mixin letterspasing($tracking){
+  letter-spacing: $tracking/1000 * 16px;
+}
+
+
 $type: '.png';
 @mixin base64img($image_name, $custom_type: false) {
   @if ($custom_type){

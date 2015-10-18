@@ -1,3 +1,64 @@
+@include device_greater(1024px)
+{
+  .contact-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    margin: auto;
+    color: white;
+    font-family: "Circe", serif;
+  }
+}
+@include device_greater(1280px){
+  .contact-info {
+    .number {
+      font-size: 100px;
+    }
+    .email {
+      font-size: 95px;
+    }
+    .skype {
+      margin-top: 50px;
+      div {
+        font-size: 40px;
+      }
+    }
+  }
+}
+@include device_greater(1600px)
+{
+  .contact-info {
+    height: 750px;
+    padding-top: 250px;
+  }
+}
+@include device_greater_less(1024px, 1600px){
+  .contact-info{
+    padding-top: percentage(220/1300);
+  }
+}
+@include device_greater_less(1024px, 1280px){
+  .contact-info{
+    .number {
+      font-size: 80px;
+    }
+    .email {
+      font-size: 60px;
+    }
+    .skype {
+      margin-top: 50px;
+      div {
+        font-size: 40px;
+      }
+    }
+  }
+}
+.skype-image
+{
+  @include base64img("skype.png");
+}
 
 
 @mixin test($container_max-width,
@@ -13,6 +74,7 @@ $vertical-right_font-size) {
     top: 0;
     left: 0;
     width: 100%;
+    padding-top: 30%;
     //max-width: $container_max-width;
     .contact-info {
       height: $contact-info_height;
@@ -42,27 +104,27 @@ $vertical-right_font-size) {
 @mixin respond-to($media) {
   @if ($media == 1920) {
     @media only screen and (max-width: 1920px) and (min-width: 1600px) {
-      @content
+      //@content
     }
   } @else if ($media == 1600) {
     @media only screen and (max-width: 1600px) and (min-width: 1368px) {
-      @content
+     // @content
     }
   } @else if ($media == 1368) {
     @media only screen and (max-width: 1368px) and (min-width: 1280px) {
-      @content
+      //@content
     }
   } @else if ($media == 1280) {
     @media only screen and (max-width: 1280px) and (min-width: 1024px) {
-      @content
+     // @content
     }
   } @else if ($media == 1024) {
     @media only screen and (max-width: 1024px) and (min-width: 980px) {
-      @content
+     // @content
     }
   }@else if ($media == 980) {
     @media only screen and (max-width: 980px) {
-      @content
+     // @content
     }
   }
 }
@@ -71,34 +133,29 @@ $vertical-right_font-size) {
  // transition: 1s;
 }
 
-.container {
-  margin: auto;
-  color: white;
-  font-family: "Circe", serif;
-}
-
-
-
 .vertical-right {
+  top:140px;
+  right:40px;
   white-space: nowrap;
-  float: right;
-  width: 0;
+  position: absolute;
+  //width: 0;
   letter-spacing: 10px;
-  height: 0;
+  //height: 0;
   -webkit-transform: rotate(270deg);
+  -webkit-transform-origin: right top;
   font-size: 26px;
 }
-@media screen and(min-width: 980px) {
+@include device_greater(980px){
   .contact-info {
     background-color: $dark-grey;
     text-align: center;
 
-    &:before {
-      height: 100%;
-      display: inline-block;
-      vertical-align: middle;
-      content: '';
-    }
+    //&:before {
+    //  height: 100%;
+    //  display: inline-block;
+    //  vertical-align: middle;
+    //  content: '';
+    //}
     .wrap {
       display: inline-block;
       white-space: normal;
@@ -124,7 +181,6 @@ $vertical-right_font-size) {
         vertical-align: middle;
         color: $yellow;
         float: left;
-        margin-top: -10px;
         margin-left: 10px;
       }
     }
@@ -186,7 +242,7 @@ $vertical-right_font-size) {
   $vertical-right_font-size: 15px)
 }
 
-@include respond-to(980){
+@include device_greater(980px){
   .container {
     background-color: $dark-grey;
     padding-top:50%;

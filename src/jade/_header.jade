@@ -1,11 +1,11 @@
 div.header
-    div &nbsp;
-    div.lbl-get-webinar.dashed Заказать вебинар
-    div.main-logo
-        div.duck_mid
     div
-        label.lbl-contact-info(for="open_contacts")
-            div.dashed Контактная информация
-div.clear
+    div.header__get-webinar.header__link
+        a.link_dashed Заказать вебинар
+    div.header__main-logo
+    div.header__contact-info.header__link
+        label(for="open_contacts")
+            a.link_dashed Контактная информация
+    div
 include _left_menu
 div.empty-space

@@ -20,3 +20,27 @@ $blue: #95B6DD;
   position: absolute;
   width: 100%;
 }
+
+.link_dashed {
+  border-bottom: dashed black 2px;
+}
+.link_type1 {
+  border: solid 2px $dark-grey;
+}
+.link_type2{
+  background-color: $dark-grey;
+}
+.link {
+  padding: 17px 73px;
+  display:inline-block;
+  @include letterspasing(400);
+  font-family: "Circe Bold", serif;
+}
+.titleh3{
+  font-size: 33px;
+  font-family: "Circe Bold Extra", serif;
+  @include letterspasing(400);
+}
+.p{
+
+}

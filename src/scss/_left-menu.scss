@@ -1,5 +1,5 @@
 @import "../../bower_components/Scut/dist/_scut.scss";
-#testcheck:checked ~ .menu-icon {
+#chk_open_menu:checked ~ .menu-icon {
   -webkit-transform: rotate(90deg);
   -webkit-transform-origin: 27px 15px;
   line {
@@ -7,7 +7,7 @@
   }
 }
 
-#testcheck:checked ~ .menu {
+#chk_open_menu:checked ~ .menu {
   -webkit-transform: rotate(90deg);
   -webkit-transform-origin: 27px 15px;
   visibility: visible !important;
@@ -17,26 +17,24 @@
   visibility: visible !important;
 }
 
-@media screen and (max-width: 980px){
-  #testcheck:checked ~ .contact-info {
+@include device_less (980px){
+  #chk_open_menu:checked ~ .contact-info {
     visibility: visible !important;
   }
-  #testcheck:checked ~ .soc-icons {
+  #chk_open_menu:checked ~ .soc-icons {
     visibility: visible !important;
   }
   .lbl-contact-info, .lbl-get-webinar{
     visibility: hidden;
   }
-}
-@media screen and (min-width: 980px) {
-  .soc-icons {
-    @include scut-fixed(0 0 n n);
-  }
-}
-@media screen and (max-width: 980px) {
   .soc-icons {
     background-color: $dark-grey;
     visibility: hidden;
+  }
+}
+@include device_greater(980px) {
+  .soc-icons {
+    @include scut-fixed(0 0 n n);
   }
 }
 .soc-icons {
@@ -54,21 +52,26 @@
     @include base64img("gplus_icon", true);
   }
 }
+$menu-width_procent: 30%;
+$menu-min-width: 270px;
+$menu-max-width: 350px;
+$item-padding: 7%;
 .menu{
-  width: 30%;
-  min-width: 270px;
-  max-width: 350px;
+  width: $menu-width_procent;
+  min-width: $menu-min-width;
+  max-width: $menu-max-width;
   background-color: white;
   .item{
-    padding: 7%;
+    padding: $item-padding;
   }
 }
 
 .left-menu {
+  font-size: 18px;
+  font-family: "Circe", serif;
   @include scut-fixed(0 n n 0);
   width: 100%;
   height: 0;
-  font-weight: bolder;
   line {
     transition: 1s;
   }
@@ -76,43 +79,40 @@
     transition: 1s;
     width: 55px;
     height: 30px;
-    //height: 0;
   }
-  font-size: 18px;
-  letter-spacing: normal;
   .item{
     border: solid 1px gray;
     border-bottom: none;
   }
+  $marg: 20px;
   .item > div {
     float: left;
     .left_menu_education {
       @include base64img("left_menu_education", true);
-      margin-right: 20px;
+      margin-right: $marg;
     }
     .left_menu_webinar {
       @include base64img("left_menu_webinar", true);
-      margin-right: 20px;
+      margin-right: $marg;
     }
     .left_menu_blogs {
       @include base64img("left_menu_blogs", true);
-      margin-right: 20px;
+      margin-right: $marg;
     }
   }
   .get-webinar > div {
     background-color: $yellow;
-    padding: 7%;
+    padding: $item-padding;
     border: solid 1px gray;
-
   }
 }
 
 
-@media screen and (max-width: 980px) {
+@include device_less (980px) {
   .contact-info, .soc-icons {
-    width: 30%;
-    min-width: 270px;
-    max-width: 350px;
+    width: $menu-width_procent;
+    min-width: $menu-min-width;
+    max-width: $menu-max-width;
   }
   .soc-icons{
     box-sizing: border-box;

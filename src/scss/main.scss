@@ -1,6 +1,7 @@
+
+@import "mixins";
 @import "general_classes";
 @import "compass-imagehelper";
-@import "mixins";
 @import "fonts";
 @import 'contact_info';
 @import "left-menu";
@@ -11,5 +12,6 @@
 @import "webinars";
 @import "articles";
 body{
-  margin: 0
+  margin: 0;
+  font-family: "Circe", serif;
 }
