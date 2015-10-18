@@ -1,31 +1,24 @@
 div.left-menu
     input(type="checkbox",id="chk_open_menu", style="display:none")
-    label.menu-icon(for='chk_open_menu', style="display:block;")
-        include ../img/toBase64/menu_icon_plain_svg.txt
-    nav.menu(style="visibility:hidden;-webkit-transform: rotate(0deg);")
+    label.left-menu__menu-icon(for='chk_open_menu')
+        include ../img/toBase64/menu_icon.svg
+    nav.left-menu-menu
         each val in left_menu.items
-            div.item
-                div
-                    div(class= val.class)
-                div= val.name
-                div.clear
-        div.get-webinar
-            div
-                span.dashed Заказать вебинар
+            div.left-menu-menu__item(class= val.class)= val.name
+        div.left-menu-menu__get-webinar
+            a.link_dashed Заказать вебинар
     input(type="checkbox",id="open_contacts", style="display:none")
-    div.contact-info(style="visibility:hidden")
+    div.left-menu__contact-info
         include _contact_info
-    div.soc-icons
-        div.icon
+    div.soc-icon
+        div.soc-icon__item
             include ../img/toBase64/facebook_icon.svg
             //div.facebook_icon
-        div.icon
+        div.soc-icon__item
             include ../img/toBase64/vk_icon.svg
             //div.vk_icon
-        div.icon
+        div.soc-icon__item
             include ../img/toBase64/gplus_icon.svg
             //div.gplus_icon
-        div.icon
-        div.clear
 
 

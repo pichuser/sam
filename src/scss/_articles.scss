@@ -2,43 +2,44 @@
 .articles{
   text-align: center;
   background-color: $blue;
-  h1{
-    color: white;
-    font-size: 40px;
-  }
-  .item{
-    hr{
-      width: 200px;
-      color: white;
-      @include scut-margin(30 n 30 n);
-    }
-    hr:last-of-type {
-      display: none;
-    }
-
-  }
+}
+.articles_title{
+  color:white;
+  padding: 80px;
+}
+.articles-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.articles-list__item{
   .date{
     font-size: 20px;
   }
   .title{
+    display: inline-block;
     font-size: 43px;
     max-width: 1000px;
     margin: auto;
-    text-decoration: underline;
+    color: black;
   }
   .text{
     max-width: 560px;
     margin: auto;
+    min-width: 200px;
+    padding: 50px;
   }
-  .btn-all-articles{
-    width: 250px;
-    height: 50px;
-    border: none;
-    background-color: $dark-grey;
-    color: white;
-    font-size: 22px;
-    span{
-      border-bottom: dashed 1px white;
-    }
+  .text:after{
+    content: "";
+    border: solid 1px white;
+    width: 200px;
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+  }
+}
+.articles-list__item:last-child{
+  .text:after{
+    display: none;
   }
 }

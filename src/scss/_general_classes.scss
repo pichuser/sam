@@ -22,7 +22,12 @@ $blue: #95B6DD;
 }
 
 .link_dashed {
-  border-bottom: dashed black 2px;
+  border-bottom-width: 2px;
+  border-bottom-style: dashed;
+}
+.link_whitecontent{
+  border-bottom-color: white;
+  color: white;
 }
 .link_type1 {
   border: solid 2px $dark-grey;
@@ -37,6 +42,7 @@ $blue: #95B6DD;
   font-family: "Circe Bold", serif;
 }
 .titleh3{
+  margin: 0;
   font-size: 33px;
   font-family: "Circe Bold Extra", serif;
   @include letterspasing(400);

@@ -1,10 +1,10 @@
 div.articles
-    h1 СТАТЬИ
-    div.item
+    h3.articles_title.titleh3 СТАТЬИ
+    ul.articles-list
         each val in articles.items
-            div.date= val.date
-            div.title= val.title
-            div.text= val.text
-            hr
-    button.btn-all-articles
-        span Все статьи
+            li.articles-list__item
+                div.date= val.date
+                a.title(href="#")= val.title
+                p.text= val.text
+    a.link.link_type2
+        span.articles__link_dashed.link_dashed.link_whitecontent Все статьи
