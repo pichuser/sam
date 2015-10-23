@@ -1,5 +1,8 @@
 @import "../../bower_components/Scut/dist/_scut.scss";
-@include scut-font-face("Circe", "../font/Circe.otf", $formats: otf);
+@font-face {
+  font-family: "Circe";
+  src: url("../font/Circe.otf");
+}
 @font-face {
   font-family: "Circe Light";
   src: url("../font/CRC35.otf");

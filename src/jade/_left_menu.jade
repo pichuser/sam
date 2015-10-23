@@ -2,6 +2,8 @@ div.left-menu
     input(type="checkbox",id="chk_open_menu", style="display:none")
     label.left-menu__menu-icon(for='chk_open_menu')
         include ../img/toBase64/menu_icon.svg
+    label.left-menu__close-btn(for='chk_open_menu')
+        img
     nav.left-menu-menu
         each val in left_menu.items
             div.left-menu-menu__item(class= val.class)= val.name

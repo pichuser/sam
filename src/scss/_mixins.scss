@@ -1,4 +1,5 @@
 @import "../../node_modules/sass-mediaqueries/media-queries";
+
 @mixin device_greater_less($min, $max)
 {
   @include mq ($media-type: "all",  $max-width: $max, $min-width: $min) {
@@ -21,6 +22,7 @@
   letter-spacing: $tracking/1000 * 16px;
 }
 
+$resolutions: ('1920', '1600', '1368', '1280', '1024', '980', '768', '649', '480', '320');
 
 $type: '.png';
 @mixin base64img($image_name, $custom_type: false) {
@@ -37,4 +39,23 @@ $type: '.png';
   margin: 0;
   padding: 0;
   display: inline-block;
+}
+
+@mixin render-screen-resolution($res){
+  @if ($res == '1920'){
+    @include device_greater(1920px){
+      @content;
+    }
+  }
+  @else if ($res == '1600')
+  {
+    @include device_greater_less(1600px, 1920px){
+      @content;
+    }
+  }@else if ($res == '1368')
+  {
+    @include device_greater_less(1368px, 1600px){
+      @content;
+    }
+  }
 }

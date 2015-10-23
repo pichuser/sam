@@ -1,8 +1,18 @@
 div.articles
     h3.articles_title.titleh3 СТАТЬИ
     ul.articles-list
-        each val in articles.items
-            li.articles-list__item
+        each val,index in articles.items
+            if(index == 0)
+                input(type='radio', name='selectarticle' id= 'inp' + index, checked='checked')
+            else
+                input(type='radio', name='selectarticle' id= 'inp' + index)
+            li.articles-list__item(class= 'articles-list__item-' + index)
+                -var nextSlide = (index + 1)%3;
+                -var prevSlide = (index + 3 - 1) %3;
+                label(for= 'inp' + prevSlide).articles-list__left-arrow
+                    img
+                label(for= 'inp' + nextSlide).articles-list__right-arrow
+                    img
                 div.date= val.date
                 a.title(href="#")= val.title
                 p.text= val.text

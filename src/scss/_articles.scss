@@ -11,6 +11,9 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  input{
+    display: none;
+  }
 }
 .articles-list__item{
   .date{
@@ -41,5 +44,39 @@
 .articles-list__item:last-child{
   .text:after{
     display: none;
+  }
+}
+
+.articles-list__left-arrow{
+  display: none;
+  position: absolute;
+  left: 0;
+  img{
+    content: url('../img/left-arrow.svg');
+  }
+}
+.articles-list__right-arrow{
+  display: none;
+  position: absolute;
+  right: 0;
+  img{
+    content: url('../img/right-arrow.svg');
+  }
+}
+@mixin carousel($i){
+  $id: 'inp' + $i;
+  ##{$id}:checked ~ .articles-list__item-#{$i} {
+      display: block !important;
+    }
+}
+@each $var in (0, 1, 2){
+  @include carousel($var);
+}
+@media all and (max-width: 980px) {
+  .articles-list__item{
+    display: none;
+  }
+  .articles-list__left-arrow, .articles-list__right-arrow{
+    display: block;
   }
 }

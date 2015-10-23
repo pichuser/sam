@@ -1,47 +1,136 @@
-.webinars{
+@mixin render_resolution(
+  $screen_resolution,
+  $webinars__title_margin_top,
+  $webinars__title_margin_bottom,
+  $webinars__description_font_size,
+  $webinars__description_letterspasing,
+  $webinars__spam_padding,
+  $calendar_padding_bottom,
+  $calendar_max_width,
+  $calendar__item_date_font_size,
+  $calendar__item_month_fontsize,
+  $calendar__item_text_font_size,
+  $calendar__item_text_max_width
+) {
+  @include render-screen-resolution ($screen_resolution) {
+    .webinars__title {
+      margin-top: $webinars__title_margin_top;
+      margin-bottom: $webinars__title_margin_bottom;
+    }
+    .webinars__description {
+      font-size: $webinars__description_font_size;
+      @include letterspasing($webinars__description_letterspasing);
+    }
+    .webinars__spam {
+      padding: $webinars__spam_padding;
+    }
+    .calendar {
+      padding-bottom: $calendar_padding_bottom;
+      max-width: $calendar_max_width;
+    }
+    .calendar__item {
+      .date {
+        font-size: $calendar__item_date_font_size;
+      }
+      .month {
+        font-size: $calendar__item_month_fontsize;
+      }
+      .text {
+        font-size: $calendar__item_text_font_size;
+        max-width: $calendar__item_text_max_width;
+      }
+    }
+  }
+}
+
+.webinars {
   text-align: center;
 }
-.webinars__title{
+
+.webinars__title {
   margin-top: 75px;
   margin-bottom: 50px;
 }
-.webinars__description{
+
+.webinars__description {
   font-family: "Circe Light", serif;
   font-size: 25px;
   @include letterspasing(15);
 }
-.webinars__spam{
+
+.webinars__spam {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 45px;
 }
-.webinars__spam:before{
-    content: url("../img/mail.svg");
-  }
 
-.calendar{
+.webinars__spam:before {
+  content: url("../img/mail.svg");
+}
+
+.calendar {
   display: flex;
   justify-content: space-between;
   padding-bottom: 70px;
   max-width: 1150px;
   margin: auto;
 }
-.calendar__item{
+
+.calendar__item {
   display: inline-block;
   vertical-align: top;
-  .date{
+  .date {
     font-size: 190px;
     color: $yellow;
   }
-  .month{
+  .month {
     font-size: 23px;
     color: $yellow;
   }
-  .text
-  {
+  .text {
     font-size: 23px;
     max-width: 270px;
     margin: auto;
   }
 }
+
+$_1920: (webinars--title-margin-top: 80px,
+        webinars--title-margin-bottom: 45px,
+        webinars--description-font-size: 25px,
+        webinars--description-letterspasing: 15,
+        webinars--spam-padding: 20px,
+        calendar-padding-bottom: 70px,
+        calendar-max-width: 1250px,
+        calendar--item-date-font-size: 190px,
+        calendar--item-month-fontsize: 23px,
+        calendar--item-text-font-size: 23px,
+        calendar--item-text-max-width: 275px);
+$_1600: $_1920;
+$_1368: (webinars--title-margin-top: 80px,
+        webinars--title-margin-bottom: 45px,
+        webinars--description-font-size: 25px,
+        webinars--description-letterspasing: 15,
+        webinars--spam-padding: 20px,
+        calendar-padding-bottom: 70px,
+        calendar-max-width: 1250px,
+        calendar--item-date-font-size: 170px,
+        calendar--item-month-fontsize: 23px,
+        calendar--item-text-font-size: 23px,
+        calendar--item-text-max-width: 275px);
+$resolution-params: (
+        '1920': $_1920,
+        '1600': $_1600,
+        '1368': $_1368
+);
+
+@mixin renderAll() {
+  @each $var in $resolutions {
+    $param: map_get($resolution_params, $var);
+    @if ($param != null) {
+      @include render_resolution($screen-resolution: $var, $param...);
+    }
+  }
+}
+
+@include renderAll();

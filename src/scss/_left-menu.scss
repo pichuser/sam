@@ -17,6 +17,10 @@
   visibility: visible !important;
 }
 
+#chk_open_menu:checked ~ .left-menu__close-btn{
+  visibility: visible !important;
+}
+
 .left-menu {
   font-size: 18px;
   font-family: "Circe", serif;
@@ -26,7 +30,7 @@
 }
 .left-menu-menu__get-webinar{
   background-color: $yellow;
-  padding: 7%;
+  padding: 30px 25px;
   border: solid 1px gray;
 }
 
@@ -48,7 +52,7 @@
   border: solid 1px gray;
   border-bottom: none;
   background-color: white;
-  padding: 7%;
+  padding: 25px 20px;
 }
 .left-menu__menu-icon{
   display: inline-block;
@@ -58,9 +62,7 @@
 }
 .left-menu-menu{
   visibility: hidden;
-  max-width: 350px;
-  min-width: 270px;
-  width: 30%;
+  width: 270px;
 }
 .left-menu__contact-info{
   visibility: hidden;
@@ -70,6 +72,18 @@
 .soc-icon__item{
   display: inline-block;
   margin: 5px;
+}
+
+.left-menu__close-btn{
+  position: absolute;
+  left: 270px;
+  top: 40px;
+  visibility: hidden;
+  padding: 10px;
+  background-color: $yellow;
+  img {
+    content: url('../img/exit.svg');
+  }
 }
 
 
@@ -88,7 +102,7 @@
     visibility: hidden;
   }
   .left-menu__contact-info{
-     width: 30%;
+     width: 270px;
    }
 }
 
@@ -121,9 +135,7 @@ $item-padding: 7%;
 
 @include device_less (980px) {
   .left-menu__contact-info, .soc-icon {
-    width: $menu-width_procent;
-    min-width: $menu-min-width;
-    max-width: $menu-max-width;
+    width: 270px;
   }
   .soc-icon{
     box-sizing: border-box;

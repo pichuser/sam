@@ -1,11 +1,8 @@
-div.contact-info
-    div.wrap
-        div.number #{contact_info.number}
-        div.email #{contact_info.email}
-        div.skype
-            div.skype-image
-            div #{contact_info.skype}
-        div.clear
-    div.vertical-right
-        label(for="open_contacts") контактная информация
+address.contact-info
+    div.contact-info__number= contact_info.number
+    div.contact-info__email= contact_info.email
+    div.contact-info__skype= contact_info.skype
+    div.contact-info__vertical-right контактная информация
+    label.contact-info__exit-btn(for="open_contacts")
+        img
 

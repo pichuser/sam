@@ -1,275 +1,376 @@
-@include device_greater(1024px)
-{
-  .contact-info {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    box-sizing: border-box;
-    margin: auto;
-    color: white;
-    font-family: "Circe", serif;
-  }
-}
-@include device_greater(1280px){
-  .contact-info {
-    .number {
-      font-size: 100px;
-    }
-    .email {
-      font-size: 95px;
-    }
-    .skype {
-      margin-top: 50px;
-      div {
-        font-size: 40px;
-      }
-    }
-  }
-}
-@include device_greater(1600px)
-{
-  .contact-info {
-    height: 750px;
-    padding-top: 250px;
-  }
-}
-@include device_greater_less(1024px, 1600px){
-  .contact-info{
-    padding-top: percentage(220/1300);
-  }
-}
-@include device_greater_less(1024px, 1280px){
-  .contact-info{
-    .number {
-      font-size: 80px;
-    }
-    .email {
-      font-size: 60px;
-    }
-    .skype {
-      margin-top: 50px;
-      div {
-        font-size: 40px;
-      }
-    }
-  }
-}
-.skype-image
-{
-  @include base64img("skype.png");
+.contact-info {
+  padding: 200px 0;
+  text-align: center;
+  background-color: $dark-grey;
+  color: white;
+  font-style: normal;
+
 }
 
-
-@mixin test($container_max-width,
-$contact-info_height,
-$number_font-size,
-$email_font-size,
-$skype_margin-top,
-$skype_div_font-size,
-$vertical-right_transform,
-$vertical-right_font-size) {
-  .container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding-top: 30%;
-    //max-width: $container_max-width;
-    .contact-info {
-      height: $contact-info_height;
-      .number {
-        font-size: $number_font-size;
-      }
-      .email {
-        font-size: $email_font-size;
-      }
-      .skype {
-        margin-top: $skype_margin-top;
-        div {
-          font-size: $skype_div_font-size;
-        }
-        .skype-image
-        {
-          @include base64img("skype.png");
-        }
-      }
-    }
-    .vertical-right {
-      -webkit-transform-origin: $vertical-right_transform
-    }
-  }
-}
-
-@mixin respond-to($media) {
-  @if ($media == 1920) {
-    @media only screen and (max-width: 1920px) and (min-width: 1600px) {
-      //@content
-    }
-  } @else if ($media == 1600) {
-    @media only screen and (max-width: 1600px) and (min-width: 1368px) {
-     // @content
-    }
-  } @else if ($media == 1368) {
-    @media only screen and (max-width: 1368px) and (min-width: 1280px) {
-      //@content
-    }
-  } @else if ($media == 1280) {
-    @media only screen and (max-width: 1280px) and (min-width: 1024px) {
-     // @content
-    }
-  } @else if ($media == 1024) {
-    @media only screen and (max-width: 1024px) and (min-width: 980px) {
-     // @content
-    }
-  }@else if ($media == 980) {
-    @media only screen and (max-width: 980px) {
-     // @content
-    }
-  }
-}
-
-.container, .contact-info, .vertical-right {
- // transition: 1s;
-}
-
-.vertical-right {
-  top:140px;
-  right:40px;
+.contact-info__vertical-right {
+  top: 140px;
+  right: 40px;
   white-space: nowrap;
   position: absolute;
-  //width: 0;
   letter-spacing: 10px;
-  //height: 0;
   -webkit-transform: rotate(270deg);
   -webkit-transform-origin: right top;
   font-size: 26px;
 }
-@include device_greater(980px){
-  .contact-info {
-    background-color: $dark-grey;
-    text-align: center;
 
-    //&:before {
-    //  height: 100%;
-    //  display: inline-block;
-    //  vertical-align: middle;
-    //  content: '';
-    //}
-    .wrap {
-      display: inline-block;
-      white-space: normal;
-      vertical-align: middle;
-      text-align: center;
-    }
-    .number {
-      color: $yellow;
-      font-weight: bold;
-    }
-    .email {
-      font-family: "Circe Light", serif;
-    }
-    .skype {
-      margin-top: 50px;
-      overflow: hidden;
-      display: inline-block;
-      text-align: center;
-      img {
-        float: left;
-      }
-      div {
-        vertical-align: middle;
-        color: $yellow;
-        float: left;
-        margin-left: 10px;
-      }
-    }
+.contact-info__number{
+  font-size: 106px;
+  color: $yellow;
+  font-family: "Circe Bold", serif;
+}
+
+.contact-info__email{
+  font-size: 95px;
+  font-family: "Circe Light", serif;
+}
+.contact-info__skype{
+  font-size: 40px;
+  color: $yellow;
+  padding: 60px;
+  font-family: "Circe", serif;
+}
+
+.contact-info__skype:before{
+  background-image: url("../img/toBase64/skype.png");
+  width: 42px;
+  height: 42px;
+  position: relative;
+  top: 10px;
+  left: -10px;
+  content: "";
+  display: inline-block;
+  background-repeat: no-repeat;
+}
+.contact-info__exit-btn{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  img {
+    content: url("../img/exit.svg");
   }
 }
 
-@include respond-to(1920) {
-  @include test($container_max-width: 1900px,
-  $contact-info_height: 750px,
-  $number_font-size: 130px,
-  $email_font-size: 95px,
-  $skype_margin-top: 50px,
-  $skype_div_font-size: 40px,
-  $vertical-right_transform: 300px 340px,
-  $vertical-right_font-size: 26px)
-}
-
-@include respond-to(1600) {
-  @include test($container_max-width: 1600px,
-  $contact-info_height: 750px,
-  $number_font-size: 130px,
-  $email_font-size: 95px,
-  $skype_margin-top: 50px,
-  $skype_div_font-size: 40px,
-  $vertical-right_transform: 300px 340px,
-  $vertical-right_font-size: 26px)
-}
-
-@include respond-to(1368) {
-  @include test($container_max-width: 1368px,
-  $contact-info_height: 700px,
-  $number_font-size: 130px,
-  $email_font-size: 95px,
-  $skype_margin-top: 50px,
-  $skype_div_font-size: 40px,
-  $vertical-right_transform: 300px 340px,
-  $vertical-right_font-size: 22px)
-}
-
-@include respond-to(1280) {
-  @include test($container_max-width: 1280px,
-  $contact-info_height: 650px,
-  $number_font-size: 130px,
-  $email_font-size: 95px,
-  $skype_margin-top: 50px,
-  $skype_div_font-size: 40px,
-  $vertical-right_transform: 300px 340px,
-  $vertical-right_font-size: 22px)
-}
-
-@include respond-to(1024) {
-  @include test($container_max-width: 1024px,
-  $contact-info_height: 550px,
-  $number_font-size: 101px,
-  $email_font-size: 73px,
-  $skype_margin-top: 30px,
-  $skype_div_font-size: 33px,
-  $vertical-right_transform: 200px 230px,
-  $vertical-right_font-size: 15px)
-}
-
-@include device_greater(980px){
-  .container {
-    background-color: $dark-grey;
-    padding-top:50%;
-    .contact-info {
-      .number {
-        font-size: 15px;
-      }
-      .email {
-        font-size: 15px;
-      }
-      .skype {
-        margin-top: 0;
-        div {
-          font-size: 15px;
-        }
-        .skype-image
-        {
-          @include base64img("skype.png");
-          width: 21px;
-          height: 21px;
-          background-size: 21px 21px;
-          float: left;
-        }
-      }
-    }
-    .vertical-right {
-      display:none;
-    }
+@include device_less (980px){
+  .contact-info{
+    text-align: left;
+    padding: 20px;
   }
+  .contact-info__number {
+    font-size: 15px;
+    font-family: "Circe", serif;
+    color: white;
+  }
+  .contact-info__email{
+    font-size: 15px;
+    font-family: "Circe Light", serif;
+  }
+  .contact-info__skype{
+    font-size: 15px;
+    font-family: "Circe Light", serif;
+    padding: 0;
+    color: white;
+  }
+  .contact-info__skype:before{
+    background-image: url("../img/toBase64/skype.png");
+    -webkit-background-size: 22px 22px;
+    background-size: 22px 22px;
+    width: 22px;
+    height: 22px;
+    position: relative;
+    top: 5px;
+    left: -5px;
+    content: "";
+    display: inline-block;
+    background-repeat: no-repeat;
+  }
+  .contact-info__vertical-right{
+    display: none;
+  }
+  .contact-info__exit-btn{
+    display: none;
+  }
+
 }
+
+
+
+//@include device_greater(1024px)
+//{
+//  .contact-info {
+//    position: absolute;
+//    top: 0;
+//    left: 0;
+//    width: 100%;
+//    box-sizing: border-box;
+//    margin: auto;
+//    color: white;
+//    font-family: "Circe", serif;
+//  }
+//}
+//@include device_greater(1280px){
+//  .contact-info {
+//    .number {
+//      font-size: 100px;
+//    }
+//    .email {
+//      font-size: 95px;
+//    }
+//    .skype {
+//      margin-top: 50px;
+//      div {
+//        font-size: 40px;
+//      }
+//    }
+//  }
+//}
+//@include device_greater(1600px)
+//{
+//  .contact-info {
+//    height: 750px;
+//    padding-top: 250px;
+//  }
+//}
+//@include device_greater_less(1024px, 1600px){
+//  .contact-info{
+//    padding-top: percentage(220/1300);
+//  }
+//}
+//@include device_greater_less(1024px, 1280px){
+//  .contact-info{
+//    .number {
+//      font-size: 80px;
+//    }
+//    .email {
+//      font-size: 60px;
+//    }
+//    .skype {
+//      margin-top: 50px;
+//      div {
+//        font-size: 40px;
+//      }
+//    }
+//  }
+//}
+//.skype-image
+//{
+//  @include base64img("skype.png");
+//}
+//
+//
+//@mixin test($container_max-width,
+//$contact-info_height,
+//$number_font-size,
+//$email_font-size,
+//$skype_margin-top,
+//$skype_div_font-size,
+//$vertical-right_transform,
+//$vertical-right_font-size) {
+//  .container {
+//    position: absolute;
+//    top: 0;
+//    left: 0;
+//    width: 100%;
+//    padding-top: 30%;
+//    //max-width: $container_max-width;
+//    .contact-info {
+//      height: $contact-info_height;
+//      .number {
+//        font-size: $number_font-size;
+//      }
+//      .email {
+//        font-size: $email_font-size;
+//      }
+//      .skype {
+//        margin-top: $skype_margin-top;
+//        div {
+//          font-size: $skype_div_font-size;
+//        }
+//        .skype-image
+//        {
+//          @include base64img("skype.png");
+//        }
+//      }
+//    }
+//    .vertical-right {
+//      -webkit-transform-origin: $vertical-right_transform
+//    }
+//  }
+//}
+//
+//@mixin respond-to($media) {
+//  @if ($media == 1920) {
+//    @media only screen and (max-width: 1920px) and (min-width: 1600px) {
+//      //@content
+//    }
+//  } @else if ($media == 1600) {
+//    @media only screen and (max-width: 1600px) and (min-width: 1368px) {
+//     // @content
+//    }
+//  } @else if ($media == 1368) {
+//    @media only screen and (max-width: 1368px) and (min-width: 1280px) {
+//      //@content
+//    }
+//  } @else if ($media == 1280) {
+//    @media only screen and (max-width: 1280px) and (min-width: 1024px) {
+//     // @content
+//    }
+//  } @else if ($media == 1024) {
+//    @media only screen and (max-width: 1024px) and (min-width: 980px) {
+//     // @content
+//    }
+//  }@else if ($media == 980) {
+//    @media only screen and (max-width: 980px) {
+//     // @content
+//    }
+//  }
+//}
+//
+//.container, .contact-info, .vertical-right {
+// // transition: 1s;
+//}
+//
+//.vertical-right {
+//  top:140px;
+//  right:40px;
+//  white-space: nowrap;
+//  position: absolute;
+//  //width: 0;
+//  letter-spacing: 10px;
+//  //height: 0;
+//  -webkit-transform: rotate(270deg);
+//  -webkit-transform-origin: right top;
+//  font-size: 26px;
+//}
+//@include device_greater(980px){
+//  .contact-info {
+//    background-color: $dark-grey;
+//    text-align: center;
+//
+//    //&:before {
+//    //  height: 100%;
+//    //  display: inline-block;
+//    //  vertical-align: middle;
+//    //  content: '';
+//    //}
+//    .wrap {
+//      display: inline-block;
+//      white-space: normal;
+//      vertical-align: middle;
+//      text-align: center;
+//    }
+//    .number {
+//      color: $yellow;
+//      font-weight: bold;
+//    }
+//    .email {
+//      font-family: "Circe Light", serif;
+//    }
+//    .skype {
+//      margin-top: 50px;
+//      overflow: hidden;
+//      display: inline-block;
+//      text-align: center;
+//      img {
+//        float: left;
+//      }
+//      div {
+//        vertical-align: middle;
+//        color: $yellow;
+//        float: left;
+//        margin-left: 10px;
+//      }
+//    }
+//  }
+//}
+//
+//@include respond-to(1920) {
+//  @include test($container_max-width: 1900px,
+//  $contact-info_height: 750px,
+//  $number_font-size: 130px,
+//  $email_font-size: 95px,
+//  $skype_margin-top: 50px,
+//  $skype_div_font-size: 40px,
+//  $vertical-right_transform: 300px 340px,
+//  $vertical-right_font-size: 26px)
+//}
+//
+//@include respond-to(1600) {
+//  @include test($container_max-width: 1600px,
+//  $contact-info_height: 750px,
+//  $number_font-size: 130px,
+//  $email_font-size: 95px,
+//  $skype_margin-top: 50px,
+//  $skype_div_font-size: 40px,
+//  $vertical-right_transform: 300px 340px,
+//  $vertical-right_font-size: 26px)
+//}
+//
+//@include respond-to(1368) {
+//  @include test($container_max-width: 1368px,
+//  $contact-info_height: 700px,
+//  $number_font-size: 130px,
+//  $email_font-size: 95px,
+//  $skype_margin-top: 50px,
+//  $skype_div_font-size: 40px,
+//  $vertical-right_transform: 300px 340px,
+//  $vertical-right_font-size: 22px)
+//}
+//
+//@include respond-to(1280) {
+//  @include test($container_max-width: 1280px,
+//  $contact-info_height: 650px,
+//  $number_font-size: 130px,
+//  $email_font-size: 95px,
+//  $skype_margin-top: 50px,
+//  $skype_div_font-size: 40px,
+//  $vertical-right_transform: 300px 340px,
+//  $vertical-right_font-size: 22px)
+//}
+//
+//@include respond-to(1024) {
+//  @include test($container_max-width: 1024px,
+//  $contact-info_height: 550px,
+//  $number_font-size: 101px,
+//  $email_font-size: 73px,
+//  $skype_margin-top: 30px,
+//  $skype_div_font-size: 33px,
+//  $vertical-right_transform: 200px 230px,
+//  $vertical-right_font-size: 15px)
+//}
+//
+//@include device_greater(980px){
+//  .container {
+//    background-color: $dark-grey;
+//    padding-top:50%;
+//    .contact-info {
+//      .number {
+//        font-size: 15px;
+//      }
+//      .email {
+//        font-size: 15px;
+//      }
+//      .skype {
+//        margin-top: 0;
+//        div {
+//          font-size: 15px;
+//        }
+//        .skype-image
+//        {
+//          @include base64img("skype.png");
+//          width: 21px;
+//          height: 21px;
+//          background-size: 21px 21px;
+//          float: left;
+//        }
+//      }
+//    }
+//    .vertical-right {
+//      display:none;
+//    }
+//  }
+//}
